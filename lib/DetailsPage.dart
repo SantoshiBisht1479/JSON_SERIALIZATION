@@ -3,7 +3,11 @@ import 'package:json_serialization/Model/NewsModel.dart';
 
 class DetailsPage extends StatelessWidget {
   final Article article;
-  DetailsPage({Key key, @required this.article}) : super(key: key);
+
+  DetailsPage({
+    Key key,
+    @required this.article,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,21 +21,22 @@ class DetailsPage extends StatelessWidget {
           children: [
             Hero(
                 tag: '${article.title}',
-                child: Image.network(article.urlToImage)),
+                child: Image.network(
+                    article.urlToImage ?? AssetImage('images/not.png'))),
             Text(
-              article.title,
+              article.title ?? 'NA',
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
-            Text(article.content,
+            Text(article.content ?? 'NA',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
-            Text(article.description,
+            Text(article.description ?? 'NA',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
-            Text(article.url,
+            Text(article.url ?? 'NA',
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.normal,
                     color: Colors.blue)),
-            Text('${article.publishedAt}')
+            Text('${article.publishedAt}' ?? 'NA')
           ],
         ),
       ),

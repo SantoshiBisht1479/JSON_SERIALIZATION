@@ -5,8 +5,10 @@ import 'package:json_serialization/Model/NewsModel.dart';
 
 class News_Model_API_Manager {
   Future<NewsModel> getNews() async {
-    var response = await http.get(
-        'http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=7a82b3a9de2e424ba91e5d58d21362ef');
+    // var response = await http.get(
+    //     'http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=7a82b3a9de2e424ba91e5d58d21362ef');
+    var response = await http.get(Uri.encodeFull(
+        'http://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=7a82b3a9de2e424ba91e5d58d21362ef'));
     if (response.statusCode == 200) {
       var jsonString = response.body;
       var jsonMap = json.decode(jsonString);

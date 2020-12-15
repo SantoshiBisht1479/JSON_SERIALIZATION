@@ -33,6 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   itemCount: snapshot.data.articles.length,
                   itemBuilder: (context, index) {
                     var article = snapshot.data.articles[index];
+                    // var image =
+                    //     article.urlToImage != null ? article.urlToImage : '';
                     return Card(
                       elevation: 10,
                       child: ListTile(
@@ -50,13 +52,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                 aspectRatio: 2,
                                 child: Hero(
                                     tag: '${article.title}',
-                                    child: Image.network(article.urlToImage)))),
+                                    child: Image.network(article.urlToImage ??
+                                        AssetImage('images/not.png'))))),
                         title: Text(
-                          article.title,
+                          article.title ?? 'NA',
                           style: TextStyle(color: Colors.blue),
                         ),
                         subtitle: Text(
-                          '${article.publishedAt}',
+                          '${article.publishedAt} ' ?? 'NA',
                           style: TextStyle(color: Colors.black),
                         ),
                       ),
